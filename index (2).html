@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Hasham Mughal · The Unseen Edge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #010004;
+      font-family: 'Space Grotesk', sans-serif;
+      color: #F0F2FA;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ---- NEXT-GEN: THE LIVING KINETIC SCULPTURE (NO TEXT, PURE REACTION) ---- */
+    #quantum-nexus {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      margin: 2rem 0 2rem 0;
+      border-radius: 4rem;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 40%, rgba(10,5,25,0.6), rgba(0,0,0,0.9));
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 0 40px rgba(168,85,247,0.1);
+      cursor: none;
+      transition: all 0.2s;
+    }
+
+    canvas#livingCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: none;
+    }
+
+    /* subtle grain overlay to enhance mystique */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* CUSTOM MOUSE: A GLOWING ENERGY ORB */
+    .mouse-orb {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192,132,252,0.9), rgba(88,28,135,0.6));
+      filter: blur(3px);
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      transition: transform 0.08s linear;
+      box-shadow: 0 0 20px #c084fc, 0 0 40px rgba(168,85,247,0.8);
+      will-change: left, top;
+    }
+
+    .mouse-orb::after {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.5);
+      animation: pulseRing 1.5s infinite;
+    }
+
+    @keyframes pulseRing {
+      0% { transform: scale(0.6); opacity: 0.8; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    /* header professional premium */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.8rem 0 1.5rem;
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #FFFFFF, #C084FC, #A855F7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .badge-header {
+      background: rgba(168, 85, 247, 0.12);
+      backdrop-filter: blur(12px);
+      padding: 0.55rem 1.4rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(168,85,247,0.5);
+    }
+    .hero {
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+    .greeting {
+      background: rgba(255,255,255,0.02);
+      display: inline-block;
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: 0.5px solid rgba(192,132,252,0.4);
+    }
+    .main-title {
+      font-size: 5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF 20%, #D8B4FE 60%, #A855F7 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.1;
+    }
+    .tagline {
+      font-size: 1.5rem;
+      color: #BDC7E6;
+    }
+    .section-badge {
+      display: inline-block;
+      background: rgba(168,85,247,0.18);
+      padding: 0.35rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      margin-bottom: 1.5rem;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+    .about-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #CFD7F0;
+      margin-bottom: 1.2rem;
+    }
+    .stats-row {
+      flex: 1;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .stat-card {
+      background: rgba(12, 12, 22, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2rem;
+      padding: 1rem 1.2rem;
+      text-align: center;
+      flex: 1;
+      transition: all 0.2s;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #fff, #C084FC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+    .service-card {
+      background: rgba(8, 8, 18, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 2rem;
+      border: 1px solid rgba(168,85,247,0.2);
+      transition: all 0.25s;
+    }
+    .service-card:hover {
+      border-color: #A855F7;
+      transform: translateY(-5px);
+    }
+    .service-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .tech-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .pill {
+      background: rgba(168,85,247,0.15);
+      padding: 0.25rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .stats-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.5rem;
+      background: rgba(168,85,247,0.03);
+      border-radius: 3rem;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(168,85,247,0.2);
+    }
+    .stats-item h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(125deg, #FFF, #D8B4FE);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .contact-section {
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      border-radius: 3rem;
+      padding: 3rem 1.5rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(168,85,247,0.3);
+    }
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .contact-card {
+      background: rgba(18, 18, 30, 0.8);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 1.8rem;
+      border-radius: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: 0.2s;
+    }
+    .whatsapp-priority {
+      background: rgba(37, 211, 102, 0.12);
+      border-color: #25D36640;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    @media (max-width: 780px) {
+      .container { padding: 0 1.2rem; }
+      .main-title { font-size: 2.6rem; }
+      .section-title { font-size: 2rem; }
+      .navbar { flex-direction: column; gap: 1rem; }
+      #quantum-nexus { height: 320px; border-radius: 2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="grain-overlay"></div>
+<div class="mouse-orb" id="energyOrb"></div>
+
+<div class="container">
+  <!-- HEADER professional -->
+  <div class="navbar">
+    <div class="logo">◈ HM ◈</div>
+    <div class="badge-header">✦ 3+ YEARS EXP ✦</div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="greeting">◈ HASHAM MUGHAL ◈</div>
+    <h1 class="main-title">Build Design Automate</h1>
+    <div class="tagline">Web Dev | Web Design | AI Automation</div>
+  </section>
+
+  <!-- ✦ THE NEXT-GEN ANIMATION ZONE: PURE REACTIVE ART — NO TEXT, ONLY MOUSE RESPONSIVE LIVING SCULPTURE ✦ -->
+  <div id="quantum-nexus">
+    <canvas id="livingCanvas"></canvas>
+  </div>
+
+  <!-- ABOUT SECTION (WHAT I DELIVER) -->
+  <section>
+    <div class="section-badge">✦ WHAT I DELIVER ✦</div>
+    <h2 class="section-title">Building Digital Excellence</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I specialize in custom web development, creating responsive, high-performance websites using modern tech stacks like React, Next.js, Node.js, and Python.</p>
+        <p>My web design services deliver pixel-perfect, unique interfaces coded from scratch. For AI automation, I build intelligent chatbots, custom scripts, and smart workflows that transform ordinary websites into next-gen platforms.</p>
+      </div>
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-number">85+</div><div>Projects</div></div>
+        <div class="stat-card"><div class="stat-number">3+</div><div>Years</div></div>
+        <div class="stat-card"><div class="stat-number">100%</div><div>Satisfaction</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section>
+    <div class="section-badge">✦ CORE EXPERTISE ✦</div>
+    <h2 class="section-title">What I Bring To The Table</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-title">Web Development</div>
+        <div class="tech-pills"><span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Node.js</span><span class="pill">Python</span><span class="pill">MongoDB</span></div>
+        <p class="service-desc">Full-stack mastery with modern frameworks. Scalable, performant web apps.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Web Design</div>
+        <div class="tech-pills"><span class="pill">Figma</span><span class="pill">UI/UX</span><span class="pill">3D Effects</span><span class="pill">Micro-interactions</span></div>
+        <p class="service-desc">Pixel-perfect designs, immersive experiences, custom animations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-title">AI Automation</div>
+        <div class="tech-pills"><span class="pill">OpenAI</span><span class="pill">LangChain</span><span class="pill">Chatbots</span><span class="pill">RAG</span><span class="pill">n8n</span></div>
+        <p class="service-desc">Intelligent agents, smart chatbots & workflows for next-gen platforms.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS SECTION -->
+  <div class="stats-showcase">
+    <div class="stats-item"><h3>85+</h3><span>Projects Delivered</span></div>
+    <div class="stats-item"><h3>100%</h3><span>Client Satisfaction</span></div>
+    <div class="stats-item"><h3>24/7</h3><span>Support Active</span></div>
+  </div>
+
+  <!-- CONTACT (no forms / no buttons) -->
+  <section class="contact-section">
+    <div class="section-badge">✦ LET'S CREATE ✦</div>
+    <h2 class="section-title">Ready To Build Something Amazing?</h2>
+    <div class="contact-cards">
+      <div class="contact-card"><span>✉️</span><span>hashammughal798@gmail.com</span></div>
+      <div class="contact-card whatsapp-priority"><span>📱</span><span>+92 370 1485836 / WhatsApp Priority</span></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    © 2026 Hasham Mughal | Transforming Ideas Into Reality
+  </div>
+</div>
+
+<script>
+  (function() {
+    // ---- CUSTOM MOUSE ORB (ENERGY FOLLOW) ----
+    const orb = document.getElementById('energyOrb');
+    let mouseX = 0, mouseY = 0;
+    let orbX = 0, orbY = 0;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    function animateOrb() {
+      orbX += (mouseX - orbX) * 0.2;
+      orbY += (mouseY - orbY) * 0.2;
+      orb.style.left = `${orbX - 16}px`;
+      orb.style.top = `${orbY - 16}px`;
+      requestAnimationFrame(animateOrb);
+    }
+    animateOrb();
+
+    // ---------- NEXT-GEN LIVING CANVAS SCULPTURE (NO TEXT, PURE HYPER-REACTIVE) ----------
+    const canvas = document.getElementById('livingCanvas');
+    const container = document.getElementById('quantum-nexus');
+    let ctx = canvas.getContext('2d');
+    let width, height;
+    let mouseCanvasX = 0, mouseCanvasY = 0;
+    let mousePresent = false;
+    let time = 0;
+    let particles = [];
+    const PARTICLE_COUNT = 180;
+
+    class EnergyParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.origX = x;
+        this.origY = y;
+        this.vx = 0;
+        this.vy = 0;
+        this.size = Math.random() * 2.4 + 1.2;
+        this.phase = Math.random() * Math.PI * 2;
+        this.color = `hsl(${260 + Math.random() * 40}, 85%, 65%)`;
+        this.waveSpeed = 0.008 + Math.random() * 0.01;
+      }
+      update(mx, my, force) {
+        // organic motion: sine wave wandering
+        this.vx += (Math.sin(time * this.waveSpeed + this.phase) * 0.08 - this.vx * 0.03);
+        this.vy += (Math.cos(time * this.waveSpeed * 1.3 + this.phase) * 0.08 - this.vy * 0.03);
+        
+        // magnetic repulsion/attraction based on mouse proximity
+        let dx = this.x - mx;
+        let dy = this.y - my;
+        let dist = Math.hypot(dx, dy);
+        if (dist < 95 && mx > 0 && my > 0) {
+          let angle = Math.atan2(dy, dx);
+          let forceMagnitude = (1 - dist / 100) * force * 1.8;
+          this.vx += Math.cos(angle) * forceMagnitude * 0.6;
+          this.vy += Math.sin(angle) * forceMagnitude * 0.6;
+        }
+        // subtle attraction back to original position (elastic)
+        this.vx += (this.origX - this.x) * 0.012;
+        this.vy += (this.origY - this.y) * 0.012;
+        // damping
+        this.vx *= 0.94;
+        this.vy *= 0.94;
+        this.x += this.vx;
+        this.y += this.vy;
+      }
+      draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#c084fc';
+        ctx.fill();
+        // inner glow
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+      }
+    }
+
+    function initParticles(w, h) {
+      particles = [];
+      for (let i = 0; i < PARTICLE_COUNT; i++) {
+        let x = Math.random() * w;
+        let y = Math.random() * h;
+        particles.push(new EnergyParticle(x, y));
+      }
+      // also generate some dynamic neural links
+    }
+
+    let neuralLinks = [];
+    function updateNeuralLinks() {
+      neuralLinks = [];
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          let dx = particles[i].x - particles[j].x;
+          let dy = particles[i].y - particles[j].y;
+          let dist = Math.hypot(dx, dy);
+          if (dist < 68 && dist > 5) {
+            neuralLinks.push({ a: particles[i], b: particles[j], dist });
+          }
+        }
+      }
+    }
+
+    // advanced: time-warp field distortion
+    let distortionField = 0;
+
+    function drawConnections(ctx) {
+      for (let link of neuralLinks) {
+        let intensity = 1 - (link.dist / 70);
+        let alpha = Math.min(0.38, intensity * 0.45);
+        ctx.beginPath();
+        ctx.moveTo(link.a.x, link.a.y);
+        ctx.lineTo(link.b.x, link.b.y);
+        ctx.strokeStyle = `rgba(168, 85, 247, ${alpha * (0.7 + Math.sin(time) * 0.2)})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+      }
+    }
+
+    let mouseForce = 0;
+    let lastMouseDist = 100;
+    
+    function resizeCanvas() {
+      const rect = container.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = width;
+      canvas.height = height;
+      initParticles(width, height);
+    }
+    
+    window.addEventListener('resize', () => { resizeCanvas(); });
+    resizeCanvas();
+
+    // track mouse inside canvas area
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseCanvasX = e.clientX - rect.left;
+      mouseCanvasY = e.clientY - rect.top;
+      mousePresent = true;
+      // calculate dynamic force based on speed of mouse (extra dimension)
+      if (window.lastMouseX !== undefined) {
+        let speed = Math.hypot(mouseCanvasX - window.lastMouseX, mouseCanvasY - window.lastMouseY);
+        mouseForce = Math.min(2.2, speed * 0.08 + 0.6);
+      } else {
+        mouseForce = 1.2;
+      }
+      window.lastMouseX = mouseCanvasX;
+      window.lastMouseY = mouseCanvasY;
+    });
+    
+    canvas.addEventListener('mouseleave', () => {
+      mousePresent = false;
+      mouseForce = 0;
+      window.lastMouseX = undefined;
+    });
+    
+    // also when mouse moves on whole window, but canvas coordinate default
+    document.body.addEventListener('mousemove', (e) => {
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      if (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom) {
+        // already handled
+      } else {
+        mousePresent = false;
+        mouseForce = 0;
+      }
+    });
+
+    // dramatic visual reaction: vortex and morphing
+    let vortexStrength = 0;
+    
+    function animateCanvas() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, width, height);
+      time += 0.025;
+      
+      let currentForce = mousePresent ? mouseForce : 0;
+      if (!mousePresent) currentForce = 0;
+      
+      // add pulsating distortionField based on mouse proximity
+      if (mousePresent && mouseCanvasX && mouseCanvasY) {
+        vortexStrength += (0.12 - vortexStrength) * 0.1;
+      } else {
+        vortexStrength *= 0.96;
+      }
+      
+      // update particles with magnetic mouse influence
+      for (let p of particles) {
+        if (mousePresent && mouseCanvasX && mouseCanvasY) {
+          p.update(mouseCanvasX, mouseCanvasY, currentForce + vortexStrength * 0.7);
+        } else {
+          p.update(-1000, -1000, 0);
+        }
+        // boundary soft wrap (keep inside canvas)
+        if (p.x < 0) p.x = 2;
+        if (p.x > width) p.x = width - 2;
+        if (p.y < 0) p.y = 2;
+        if (p.y > height) p.y = height - 2;
+      }
+      
+      // update neural links dynamically for organic web
+      updateNeuralLinks();
+      
+      // draw advanced glowing background aura (mouse reactive)
+      let grad = ctx.createLinearGradient(0, 0, width, height);
+      grad.addColorStop(0, '#02010c');
+      grad.addColorStop(1, '#0a041a');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
+      
+      // draw special effect: luminous vortex wave when mouse moves
+      if (mousePresent && mouseCanvasX && mouseCanvasY) {
+        let radius = 70 + Math.sin(time * 15) * 12;
+        let gradientGlow = ctx.createRadialGradient(mouseCanvasX, mouseCanvasY, 5, mouseCanvasX, mouseCanvasY, radius);
+        gradientGlow.addColorStop(0, 'rgba(192,132,252,0.28)');
+        gradientGlow.addColorStop(1, 'rgba(88,28,135,0)');
+        ctx.globalCompositeOperation = 'lighter';
+        ctx.fillStyle = gradientGlow;
+        ctx.fillRect(0, 0, width, height);
+        ctx.globalCompositeOperation = 'source-over';
+        
+        // quantum ripple lines
+        for(let i=0;i<12;i++) {
+          let angle = time * 8 + i;
+          let xOff = Math.cos(angle) * (Math.sin(time * 12) * 20);
+          let yOff = Math.sin(angle * 1.5) * (Math.cos(time * 9) * 20);
+          ctx.beginPath();
+          ctx.moveTo(mouseCanvasX, mouseCanvasY);
+          ctx.lineTo(mouseCanvasX + xOff, mouseCanvasY + yOff);
+          ctx.strokeStyle = `rgba(200, 130, 255, ${0.25 + Math.sin(time * 20 + i) * 0.1})`;
+          ctx.lineWidth = 1.8;
+          ctx.stroke();
+        }
+      }
+      
+      // draw energy lines (neural connections)
+      drawConnections(ctx);
+      
+      // draw particles with extra glow
+      for (let p of particles) {
+        p.draw(ctx);
+      }
+      
+      // finally: additional swirling 'energy field' that rotates when mouse approaches (next-gen)
+      if (mousePresent && currentForce > 0.4) {
+        ctx.save();
+        ctx.globalCompositeOperation = 'screen';
+        for (let i = 0; i < 3; i++) {
+          ctx.beginPath();
+          let swirlX = mouseCanvasX + Math.sin(time * 12 + i) * 28;
+          let swirlY = mouseCanvasY + Math.cos(time * 9 + i) * 28;
+          ctx.arc(swirlX, swirlY, 12 + Math.sin(time * 20) * 4, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(192, 132, 252, 0.2)`;
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+      
+      // extra: subtle wave morph (living surface)
+      ctx.beginPath();
+      for(let i=0;i<width+30;i+=45) {
+        let waveY = height/2 + Math.sin(i * 0.01 + time * 3) * 15 + Math.cos(time * 2.4) * 8;
+        ctx.moveTo(i, waveY);
+        ctx.lineTo(i+30, waveY+Math.sin(i*0.02+time)*10);
+        ctx.strokeStyle = 'rgba(168,85,247,0.07)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      
+      requestAnimationFrame(animateCanvas);
+    }
+    
+    animateCanvas();
+    
+    // make cards interactive with orb
+    const interactive = document.querySelectorAll('.service-card, .stat-card, .contact-card, .stats-item, .badge-header');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        orb.style.transform = 'scale(1.6)';
+        orb.style.filter = 'blur(5px) brightness(1.4)';
+      });
+      el.addEventListener('mouseleave', () => {
+        orb.style.transform = 'scale(1)';
+        orb.style.filter = 'blur(0px)';
+      });
+    });
+    
+    // force canvas update on resize
+    window.addEventListener('resize', () => { 
+      setTimeout(() => { resizeCanvas(); }, 70);
+    });
+    
+    // hide default cursor only for body
+    document.body.style.cursor = 'none';
+    canvas.style.cursor = 'none';
+  })();
+</script>
+</body>
+</html>
