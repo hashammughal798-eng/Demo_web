@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Hasham Mughal | Professional Web Developer & AI Automation Expert</title>
+    <meta name="description" content="Hasham Mughal - Professional Web Developer, Web Designer & AI Automation Specialist with 3+ years experience. Custom websites, modern designs, and intelligent automation solutions.">
+    <meta name="keywords" content="web developer, web designer, AI automation, freelancer, React, Next.js, Python, chatbots">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            font-family: 'Inter', sans-serif;
+            color: #ededee;
+            overflow-x: hidden;
+        }
+
+        /* Professional Gradient Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 10%, rgba(0, 212, 255, 0.08), rgba(10, 10, 15, 1) 80%);
+            z-index: -2;
+        }
+
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .availability {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .green-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin: 2rem 0 4rem;
+        }
+
+        .hero-left {
+            flex: 1.2;
+        }
+
+        .hero-right {
+            flex: 0.8;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: #a0a0b0;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .stats-mini {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-mini {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        /* Right Side - Floating Card */
+        .floating-card {
+            background: rgba(20, 20, 30, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .service-list li::before {
+            content: "▹";
+            color: #00d4ff;
+        }
+
+        /* Services Section */
+        .services {
+            margin: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .service-card {
+            background: rgba(15, 15, 25, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(20, 20, 35, 0.7);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            color: #a0a0b0;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-stack span {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.7rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            color: #00d4ff;
+        }
+
+        /* Portfolio Preview */
+        .portfolio-preview {
+            margin: 5rem 0;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .preview-item {
+            background: rgba(10, 10, 15, 0.8);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+        }
+
+        .preview-item:hover {
+            border-color: #00d4ff;
+            transform: translateY(-3px);
+        }
+
+        .preview-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-item h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-item p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            margin: 5rem 0;
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(168,85,247,0.05));
+            border-radius: 2rem;
+        }
+
+        .contact h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50px;
+            border: 1px solid rgba(0,212,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .stats-mini {
+                justify-content: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-grid"></div>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">Hasham Mughal</div>
+        <div class="availability">
+            <div class="green-dot"></div>
+            <span>Available for Work</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-left">
+            <div class="badge">⚡ FREELANCE DEVELOPER</div>
+            <h1>
+                I Build <span class="gradient-text">Modern Web</span><br>
+                Solutions That Work
+            </h1>
+            <div class="hero-description">
+                Professional Web Developer & AI Automation Specialist with 3+ years of experience. 
+                I create custom websites, stunning designs, and intelligent automation systems.
+            </div>
+            <div class="stats-mini">
+                <div class="stat-mini">
+                    <div class="stat-number">85+</div>
+                    <div class="stat-label">PROJECTS</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">YEARS EXP</div>
+                </div>
+                <div class="stat-mini">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">SATISFACTION</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="floating-card">
+                <h3>What I Offer</h3>
+                <ul class="service-list">
+                    <li>Custom Web Development</li>
+                    <li>Modern Web Design</li>
+                    <li>AI Chatbots & Automation</li>
+                    <li>Responsive Websites</li>
+                    <li>Next.js & React Apps</li>
+                    <li>SEO Friendly Code</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services">
+        <h2 class="section-title reveal">
+            My <span>Core Services</span>
+        </h2>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon">💻</div>
+                <h3>Web Development</h3>
+                <p>Full-stack web development using modern technologies. Custom websites, web apps, and scalable solutions.</p>
+                <div class="tech-stack">
+                    <span>React</span><span>Next.js</span><span>Node.js</span><span>Python</span><span>PHP</span><span>MongoDB</span>
+                </div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🎨</div>
+                <h3>Web Design</h3>
+                <p>Pixel-perfect, responsive designs coded from scratch. Modern UI/UX that converts visitors into customers.</p>
+                <div class="tech-stack">
+                    <span>Figma</span><span>HTML/CSS</span><span>Tailwind</span><span>Animations</span>
+                </div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon">🤖</div>
+                <h3>AI Automation</h3>
+                <p>Custom chatbots, AI agents, and automation workflows. Transform your business with intelligent systems.</p>
+                <div class="tech-stack">
+                    <span>OpenAI</span><span>LangChain</span><span>Python</span><span>n8n</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Preview -->
+    <div class="portfolio-preview reveal">
+        <h2 class="section-title">What I <span>Can Build For You</span></h2>
+        <div class="preview-grid">
+            <div class="preview-item">
+                <div class="preview-icon">🏢</div>
+                <h4>Business Websites</h4>
+                <p>Professional corporate websites</p>
+            </div>
+            <div class="preview-item">
+                <div class="preview-icon">🛍️</div>
+                <h4>E-commerce Stores</h4>
+                <p>Online stores with payment integration</p>
+            </div>
+            <div class="preview-item">
+                <div class="preview-icon">📱</div>
+                <h4>Portfolio Websites</h4>
+                <p>Personal & creative portfolios</p>
+            </div>
+            <div class="preview-item">
+                <div class="preview-icon">⚡</div>
+                <h4>AI Chatbots</h4>
+                <p>Smart customer support bots</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact reveal">
+        <h2>Let's Work Together</h2>
+        <p style="color: #a0a0b0; margin-bottom: 1rem;">Have a project in mind? Let's discuss and build something great.</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span>hashammughal798@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <span>+92 370 1485836</span>
+                <span style="font-size: 0.7rem; color: #00d4ff;">(WhatsApp)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © 2026 Hasham Mughal — Web Developer | Designer | AI Automation Expert
+    </div>
+</div>
+
+<script>
+    // Scroll Reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
